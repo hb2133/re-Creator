@@ -2,7 +2,7 @@
 
 
 #include "PartitionActor.h"
-
+#include "Runtime/Engine/public/EngineUtils.h"
 // Sets default values
 APartitionActor::APartitionActor()
 {
@@ -21,6 +21,10 @@ void APartitionActor::BeginPlay()
 	Super::BeginPlay();
 
 
+	UWorld* CurrentWorld = GetWorld();
+
+	
+	
 	//for (auto i : m_maps) {
 	//	FVector Fvec = FVector(GetActorLocation());
 
@@ -40,6 +44,16 @@ void APartitionActor::BeginPlay()
 void APartitionActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	
 
+	/*UWorld* CurrentWorld = GetWorld();
+
+	TArray<AActor*> objs;
+	pivotActor->GetAttachedActors(objs);*/
+	//pivotActor->GetDefaultSubobjects(objs);
+	/*UE_LOG(LogTemp, Warning, TEXT("%d"), CurrentWorld->GetActorCount());
+	for (const auto& i : objs) {
+
+		UE_LOG(LogTemp, Warning, TEXT("%s"),*i->GetName());
+	}*/
+	
 }

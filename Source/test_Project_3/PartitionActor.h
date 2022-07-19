@@ -6,6 +6,22 @@
 #include "GameFramework/Actor.h"
 #include "PartitionActor.generated.h"
 
+
+USTRUCT(Atomic, BlueprintType)
+struct FDirect {
+
+	GENERATED_BODY()
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
+		AActor* up;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
+		AActor* down;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
+		AActor* right;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
+		AActor* left;
+};
+
 UCLASS()
 class TEST_PROJECT_3_API APartitionActor : public AActor
 {
@@ -26,5 +42,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
 		AActor * pivotActor;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
-	TArray<AActor*> m_maps;
+	TArray<AActor*> maps;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
+		FDirect roomDir;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
+		FDirect roomTriggerDir;
 };
+
+

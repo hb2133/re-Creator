@@ -2,15 +2,15 @@
 
 
 #include "MyLevelScriptActor.h"
-#include"PartitionActor.h"
-
+#include "PartitionActor.h"
+#include<any>
 void AMyLevelScriptActor::BeginPlay()
 {
 	Super::BeginPlay();
 	UWorld* world = GetWorld();
 	
 
-		m_MapPositions.AddDefaulted(m_mapSize);
+	m_MapPositions.AddDefaulted(m_mapSize);
 	/*for (size_t h = 0; h < m_mapSize; ++h)
 	{
 		for (size_t w = 0; w < m_mapSize; ++w)
