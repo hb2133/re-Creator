@@ -13,6 +13,7 @@ enum class EDIRECT : uint8 {
 	DOWN UMETA(DisplayName = "Down"),
 	RIGHT UMETA(DisplayName = "Right"),
 	LEFT UMETA(DisplayName = "Left"),
+	CURRENT UMETA(DisplayName = "Current"),
 };
 
 UENUM(BlueprintType)
@@ -52,6 +53,8 @@ public:
 		FRoomNode right;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
 		FRoomNode left;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
+		FRoomNode current;
 	
 };
 
@@ -80,7 +83,7 @@ public:
 		FString ContainName(AActor* inputActor
 			,const FString& up, const FString& down, const FString& right, const FString& left);
 	UFUNCTION(BlueprintCallable)
-		FDirect& dirAdd(AActor* element, EDIRECT dir);
+		FDirect& TriggerDirAdd(AActor* element, EDIRECT dir);
 		
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")

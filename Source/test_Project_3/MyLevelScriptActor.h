@@ -22,14 +22,12 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
-		int m_mapSize;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
-		int m_distance;
-
 	
-	TArray<TArray<AActor*>> m_MapPositions;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
+	TArray<AActor*> MapTemplate;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
 		AActor* m_PartitionBaseActor;
+	UFUNCTION(BlueprintCallable)
+		AActor* RandomMapTemplate();
 };

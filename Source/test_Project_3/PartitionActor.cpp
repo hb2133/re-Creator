@@ -93,7 +93,7 @@ FString APartitionActor::ContainName(AActor* inputActor
 	return FString();
 }
 
-FDirect& APartitionActor::dirAdd(AActor* element, EDIRECT dir)
+FDirect& APartitionActor::TriggerDirAdd(AActor* element, EDIRECT dir)
 {
 	switch (dir) {
 	case EDIRECT::UP:
