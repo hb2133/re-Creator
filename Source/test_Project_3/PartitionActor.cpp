@@ -8,8 +8,7 @@ APartitionActor::APartitionActor()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	USceneComponent* SphereComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
-	RootComponent = SphereComponent;
+
 	//SetFolderPath("MapPartition");
 
 	
@@ -22,7 +21,7 @@ void APartitionActor::BeginPlay()
 
 
 	UWorld* CurrentWorld = GetWorld();
-
+	
 	
 	
 	//for (auto i : m_maps) {
