@@ -90,6 +90,7 @@ FString APartitionActor::ContainName(AActor* inputActor
 		return const_cast<FString&>(left);
 	}
 
+
 	return FString();
 }
 
@@ -111,6 +112,10 @@ FDirect& APartitionActor::TriggerDirAdd(AActor* element, EDIRECT dir)
 	case EDIRECT::LEFT:
 		roomTriggerDir.left.nextMapTrigger = element;
 		roomTriggerDir.left.eDir = EDIRECT::LEFT;
+		break;
+	case EDIRECT::CURRENT:
+		roomTriggerDir.current.nextMapTrigger = element;
+		roomTriggerDir.current.eDir = EDIRECT::CURRENT;
 		break;
 	}
 	return roomTriggerDir;

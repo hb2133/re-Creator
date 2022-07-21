@@ -89,11 +89,12 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
 		AActor * pivotActor;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
-	TArray<AActor*> maps;
+		TArray<AActor*> maps;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
 		FDirect roomDir;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
 		FDirect roomTriggerDir;
+
 
 
 };
