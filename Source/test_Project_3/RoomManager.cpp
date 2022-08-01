@@ -69,6 +69,7 @@ void ARoomManager::RandomEnemyOrder()
 	auto w = this->GetLevel()->GetLevelScriptActor();
 	auto world = Cast<AMyLevelScriptActor>(w);
 
+
 	if (w == nullptr) {
 		UE_LOG(LogTemp, Log, TEXT("w is nullptr, roomManager"));
 		return;
@@ -79,23 +80,54 @@ void ARoomManager::RandomEnemyOrder()
 	}
 
 
-	std::priority_queue<FSpawnOrder> orderQ;
+	std::priority_queue<FSpawnOrder> newOrderQ;
+	const int check = 100;
+	const int max_cost = 1000;
 
-	for (auto& item : world->enemyList) {
-		orderQ.emplace(item);
+
+	TArray<FSpawnOrder> orderArray;
+	for (int i = 0; i < world->enemyList.Num(); ++i) {
+		for (int j = 0; j < (check / world->enemyList[i].cost); ++j) {
+			orderArray.Emplace(world->enemyList[i]);
+		}
 	}
 
-	for (int i = orderQ.size(); i > 0; i--) {
-		UE_LOG(LogTemp, Log, TEXT("%d"), orderQ.top().count);
-		RoomStatus.CurrentMonsters.Add(orderQ.top());
-		orderQ.pop();
+	{
+		FSpawnOrder targetOrder;
+
+		for (int i = max_cost; i > 0; ) {
+			int32 num = FMath::RandRange(0, orderArray.Num() - 1);
+
+			targetOrder = orderArray[num];
+			targetOrder.count = FMath::RandRange(5, 30);
+
+			UE_LOG(LogTemp, Log, TEXT("targetOrder: %d"), targetOrder.count);
+			int culCost = targetOrder.cost * targetOrder.count;
+
+			i -= culCost;
+			if (i < culCost) {
+				for (int j = i; j > culCost;) {
+					culCost = culCost - targetOrder.cost;
+					targetOrder.count--;
+				}
+			}
+
+			newOrderQ.emplace(targetOrder);
+		}
 	}
+	RoomStatus.CurrentMonsters.Empty();
+	for (int i = newOrderQ.size(); i > 0; i--) {
+		UE_LOG(LogTemp, Log, TEXT("%d"), newOrderQ.top().count);
+		RoomStatus.CurrentMonsters.Add(newOrderQ.top());
+		newOrderQ.pop();
+	}
+
+
+		
+	UE_LOG(LogTemp, Log, TEXT("orderQ size : %d"), newOrderQ.size());
+	UE_LOG(LogTemp, Log, TEXT("orderQ cost : %d"), newOrderQ.top().cost);
+
 	
-	auto amount = 1000 / orderQ.size();
-
-	auto count = amount / orderQ.top().cost;
-
-
 
 
 	
