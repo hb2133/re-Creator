@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "RoomManager.h"
 #include "CoreMinimal.h"
 #include "Engine/LevelScriptActor.h"
 #include "MyLevelScriptActor.generated.h"
@@ -30,4 +31,7 @@ public:
 		AActor* m_PartitionBaseActor;
 	UFUNCTION(BlueprintCallable)
 		AActor* RandomMapTemplate();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
+		TArray<FSpawnOrder> enemyList;
 };
