@@ -1,7 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "RoomTriggerBase.h"
 #include "PartitionActor.h"
+
 #include "Runtime/Engine/public/EngineUtils.h"
 // Sets default values
 APartitionActor::APartitionActor()
@@ -9,7 +10,6 @@ APartitionActor::APartitionActor()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	//SetFolderPath("MapPartition");
 
 	
 }
@@ -24,18 +24,7 @@ void APartitionActor::BeginPlay()
 	
 	
 	
-	//for (auto i : m_maps) {
-	//	FVector Fvec = FVector(GetActorLocation());
-
-	//	FRotator Frot = GetTransform().Rotator();
-	//	FActorSpawnParameters Fparam = FActorSpawnParameters();
-	//	Fparam.Template = i;
-	//	auto actor = GetWorld()->SpawnActor<AActor>(Fvec,Frot,Fparam);
-	//	
-	//	//actor->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
-	//	
-	//
-	//}
+	
 	
 }
 
@@ -44,16 +33,7 @@ void APartitionActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	/*UWorld* CurrentWorld = GetWorld();
-
-	TArray<AActor*> objs;
-	pivotActor->GetAttachedActors(objs);*/
-	//pivotActor->GetDefaultSubobjects(objs);
-	/*UE_LOG(LogTemp, Warning, TEXT("%d"), CurrentWorld->GetActorCount());
-	for (const auto& i : objs) {
-
-		UE_LOG(LogTemp, Warning, TEXT("%s"),*i->GetName());
-	}*/
+	
 	
 }
 
@@ -74,8 +54,10 @@ void APartitionActor::setRoom()
 }
 
 FString APartitionActor::ContainName(AActor* inputActor
-	,const FString& up, const FString& down, const FString& right, const FString& left)
+	,const FString& up, const FString& down , const FString& right, const FString& left )
 {
+	
+
 	if (inputActor->GetName().Contains(up)) {
 		return const_cast<FString&>(up);
 	}
@@ -118,5 +100,33 @@ FDirect& APartitionActor::TriggerDirAdd(AActor* element, EDIRECT dir)
 		break;
 	}
 	return roomTriggerDir;
+}
+
+FDirect& APartitionActor::SetNextMap(FDirect input, FDirect target)
+{
+	target.up.nextMap = input.up.nextMap;
+	target.down.nextMap = input.down.nextMap;
+	target.right.nextMap = input.right.nextMap;
+	target.left.nextMap = input.left.nextMap;
+	target.current.nextMap = input.current.nextMap;
+	return target;
+}
+
+TArray<AActor*> APartitionActor::AddTrigger(AActor* input)
+{
+	if (input == nullptr) return Triggers;
+	
+	
+
+	Triggers.AddUnique(input);
+
+	return Triggers;
+}
+
+void APartitionActor::Duplicate(AActor* a)
+{
+	
+	
+	
 }
 

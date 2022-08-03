@@ -1,7 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-	
+
+#include "EngineMinimal.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "PartitionActor.generated.h"
@@ -84,16 +85,28 @@ public:
 			,const FString& up, const FString& down, const FString& right, const FString& left);
 	UFUNCTION(BlueprintCallable)
 		FDirect& TriggerDirAdd(AActor* element, EDIRECT dir);
-		
+
+	UFUNCTION(BlueprintCallable)
+		FDirect& SetNextMap(FDirect input, FDirect target);
+
+	UFUNCTION(BlueprintCallable)
+		TArray<AActor*> AddTrigger(AActor* input);
+	UFUNCTION(BlueprintCallable)
+		void Duplicate(AActor* a);
+
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
 		AActor * pivotActor;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
 		TArray<AActor*> maps;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
+		TArray<AActor*> Triggers;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Info")
 		FDirect roomDir;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Info")
 		FDirect roomTriggerDir;
+	
 
 
 
