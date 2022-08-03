@@ -3,6 +3,7 @@
 #pragma once
 
 
+
 #include "PartitionActor.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
@@ -10,6 +11,24 @@
 
 
 
+USTRUCT(BlueprintType)
+struct FSpawnOrder {
+
+	GENERATED_BODY()
+public:
+
+	
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Status")
+		int count;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Status")
+		int cost;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Status")
+		UClass* enemyClass;
+
+	bool operator<(const FSpawnOrder& target) const;
+		
+};
 
 USTRUCT(BlueprintType)
 struct FRoomStatus {
@@ -17,16 +36,14 @@ struct FRoomStatus {
 	GENERATED_BODY()
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Status")
-		TArray<AActor*> CurrentMonsters;
+		TArray<FSpawnOrder> CurrentMonsters;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Status")
-		int cost;
+		int cost = 0;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Status")
-		int level;
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Status")
+		int level = 0;
+	
 		static int ClearCost;
-	/*UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Status")
-		FRoomNode current;*/
-
+	
 };
 
 UCLASS()
@@ -46,13 +63,14 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
 		APartitionActor* PartitionActor;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
-		FRoomStatus ManagerInfo;
+		FRoomStatus RoomStatus;
 
 	UFUNCTION(BlueprintCallable)
 		void setInfoRoom(APartitionActor* actor);
@@ -61,5 +79,9 @@ public:
 		int getClearCost() const;
 	UFUNCTION(BlueprintCallable)
 		void setClearCost(int num);
+
+	UFUNCTION(BlueprintCallable)
+		void RandomEnemyOrder();
+	
 
 };
