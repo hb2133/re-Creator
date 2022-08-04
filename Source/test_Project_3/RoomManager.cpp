@@ -11,7 +11,7 @@
 // 
 // 
 // 
-int FRoomStatus::ClearCost = 0;
+int ARoomManager::ClearCost = 0;
 ARoomManager::ARoomManager()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
