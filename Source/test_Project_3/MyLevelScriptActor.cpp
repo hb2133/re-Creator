@@ -24,6 +24,10 @@ void AMyLevelScriptActor::Tick(float DeltaTime)
 AActor* AMyLevelScriptActor::RandomMapTemplate()
 {
 	int32 num = FMath::RandRange(0, MapTemplate.Num()-1);
-	
+
+	TArray<EROOMTYPE> roomTypes{ EROOMTYPE::BOSS,EROOMTYPE::MONSTER,EROOMTYPE::SHOP };
+
+	int8 typsNum = FMath::RandRange(0, roomTypes.Num() - 1);
+
 	return MapTemplate[num];
 }

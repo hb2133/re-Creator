@@ -54,12 +54,12 @@ void ARoomManager::setInfoRoom(APartitionActor* actor)
 
 int ARoomManager::getClearCost() const
 {
-	return RoomStatus.ClearCost;
+	return ClearCost;
 }
 
 void ARoomManager::setClearCost(int num)
 {
-	RoomStatus.ClearCost += num;
+	ClearCost += num;
 }
 
 
