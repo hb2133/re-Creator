@@ -42,7 +42,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Status")
 		int level = 0;
 	
-		static int ClearCost;
+	
 	
 };
 
@@ -54,6 +54,7 @@ class TEST_PROJECT_3_API ARoomManager : public AActor
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Map", meta = (AllowPrivateAccess = "true"))
 	FDirect InfoRoom;
 
+	static int ClearCost;
 public:	
 	// Sets default values for this actor's properties
 	ARoomManager();
