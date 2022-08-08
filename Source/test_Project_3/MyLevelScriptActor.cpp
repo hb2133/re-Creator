@@ -31,3 +31,39 @@ AActor* AMyLevelScriptActor::RandomMapTemplate()
 
 	return MapTemplate[num];
 }
+
+UClass* AMyLevelScriptActor::RandomAreaEffect()
+{
+	int32 num = FMath::RandRange(0, AreaEffectList.Num() - 1);
+
+	/*for (auto area : MapAreaList) {
+		if (area->m_Effect != nullptr) {
+			area->m_Effect->Destroy();
+		}
+	}
+	auto world = GetWorld();*/
+
+	/*for (auto part : PartitionList) {
+		num = FMath::RandRange(0, AreaEffectList.Num() - 1);
+		auto trans = part->GetTransform();
+
+		
+		auto area = world->SpawnActor<AMapAreaEffect>(AreaEffectList[num]->StaticClass());
+		area->SetActorTransform(trans);
+
+
+	}*/
+
+	/*float temp = 1.0f;
+	for (auto area : MapAreaList) {
+
+		num = FMath::RandRange(0, AreaEffectList.Num() - 1);
+
+		auto effect = GetWorld()->SpawnActor(AreaEffectList[num]);
+		auto eft = Cast<AMyEffect>(effect);
+		area->SpawnEffect(area,eft , temp, temp, temp);
+	}*/
+	return AreaEffectList[num];
+}
+
+
