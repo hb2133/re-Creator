@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Engine/Classes/Components/BoxComponent.h"
 #include "SeeingThroughCollision.h"
-#include "test_Project_3Character.h"
 #include "SeeingThroughActor.h"
+#include "Engine/Classes/Components/BoxComponent.h"
+#include "test_Project_3Character.h"
 
 // Sets default values
 ASeeingThroughCollision::ASeeingThroughCollision()

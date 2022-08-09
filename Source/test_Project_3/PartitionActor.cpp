@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "RoomTriggerBase.h"
 #include "PartitionActor.h"
+#include "RoomTriggerBase.h"
 
 #include "Runtime/Engine/public/EngineUtils.h"
 // Sets default values

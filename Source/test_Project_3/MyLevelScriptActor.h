@@ -3,6 +3,7 @@
 #pragma once
 
 #include "RoomManager.h"
+#include "MapAreaEffect.h"
 #include "CoreMinimal.h"
 #include "Engine/LevelScriptActor.h"
 #include "MyLevelScriptActor.generated.h"
@@ -31,7 +32,17 @@ public:
 		AActor* m_PartitionBaseActor;
 	UFUNCTION(BlueprintCallable)
 		AActor* RandomMapTemplate();
+	UFUNCTION(BlueprintCallable)
+		UClass* RandomAreaEffect();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
 		TArray<FSpawnOrder> enemyList;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
+		TArray<AActor*> PartitionList;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
+		TArray<AMapAreaEffect*> MapAreaList;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
+		TArray<UClass*> AreaEffectList;
+
+
 };
