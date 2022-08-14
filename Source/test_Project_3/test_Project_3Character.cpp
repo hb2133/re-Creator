@@ -64,7 +64,7 @@ void Atest_Project_3Character::SetupPlayerInputComponent(class UInputComponent* 
 	// "turn" handles devices that provide an absolute delta, such as a mouse.
 	// "turnrate" is for devices that we choose to treat as a rate of change, such as an analog joystick
 	//PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput); <--마우스 Yaw 제어
-	PlayerInputComponent->BindAxis("TurnRate", this, &Atest_Project_3Character::TurnAtRate);
+	//PlayerInputComponent->BindAxis("TurnRate", this, &Atest_Project_3Character::TurnAtRate);
 	//PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput); <-- 마우스 Pitch 제어
 	PlayerInputComponent->BindAxis("LookUpRate", this, &Atest_Project_3Character::LookUpAtRate);
 
