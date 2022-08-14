@@ -72,3 +72,11 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+Content/ProceduralNaturePack/Textures/ground_mud_bsm_8192.uasset
+Content/ProceduralNaturePack/Textures/ground_mud_no_puddle_bsm_8192.uasset
+Content/ProceduralNaturePack/Textures/ground_mud_no_puddle_nrm_8192.uasset
+Content/ProceduralNaturePack/Textures/ground_mud_no_puddle_rgm_8192.uasset
+Content/ProceduralNaturePack/Textures/ground_mud_no_puddle_spe_8192.uasset
+Content/ProceduralNaturePack/Textures/ground_mud_nrm_8192.uasset
+Content/ProceduralNaturePack/Textures/ground_mud_plx_8192.uasset
+Content/ProceduralNaturePack/Textures/ground_mud_rgm_8192.uasset
