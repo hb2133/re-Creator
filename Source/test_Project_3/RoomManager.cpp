@@ -90,6 +90,7 @@ void ARoomManager::RandomEnemyOrder()
 		for (int j = 0; j < (check / world->enemyList[i].cost); ++j) {
 			orderArray.Emplace(world->enemyList[i]);
 		}
+		UE_LOG(LogTemp, Log, TEXT("orderNum : %d"), (check / world->enemyList[i].cost));
 	}
 
 	{
