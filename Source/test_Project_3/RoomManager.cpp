@@ -80,9 +80,9 @@ void ARoomManager::RandomEnemyOrder()
 	}
 
 
-	std::priority_queue<FSpawnOrder> newOrderQ;
+	TArray<FSpawnOrder> newOrderQ;
 	const int check = 100;
-	const int max_cost = 1000;
+	const int max_cost = 500;
 
 
 	TArray<FSpawnOrder> orderArray;
@@ -100,9 +100,11 @@ void ARoomManager::RandomEnemyOrder()
 			int32 num = FMath::RandRange(0, orderArray.Num() - 1);
 
 			targetOrder = orderArray[num];
-			targetOrder.count = FMath::RandRange(5, 30);
+			int max = (60 / targetOrder.cost);
+			targetOrder.count = FMath::RandRange(1, max);
 
-			UE_LOG(LogTemp, Log, TEXT("targetOrder: %d"), targetOrder.count);
+			UE_LOG(LogTemp, Log, TEXT("targetOrdercost: %d"), targetOrder.cost);
+			UE_LOG(LogTemp, Log, TEXT("targetOrdercount: %d"), targetOrder.count);
 			int culCost = targetOrder.cost * targetOrder.count;
 
 			i -= culCost;
@@ -113,24 +115,22 @@ void ARoomManager::RandomEnemyOrder()
 				}
 			}
 
-			newOrderQ.emplace(targetOrder);
+			newOrderQ.Emplace(targetOrder);
 		}
 	}
 	RoomStatus.CurrentMonsters.Empty();
-	for (int i = newOrderQ.size(); i > 0; i--) {
-		UE_LOG(LogTemp, Log, TEXT("%d"), newOrderQ.top().count);
-		RoomStatus.CurrentMonsters.Add(newOrderQ.top());
-		newOrderQ.pop();
+
+	for (auto var :newOrderQ)
+	{
+		UE_LOG(LogTemp, Log, TEXT("%d"), var.cost);
+		RoomStatus.CurrentMonsters.Add(var);
 	}
 
 
-		
-	UE_LOG(LogTemp, Log, TEXT("orderQ size : %d"), newOrderQ.size());
-	UE_LOG(LogTemp, Log, TEXT("orderQ cost : %d"), newOrderQ.top().cost);
-
-	
 
 
+	UE_LOG(LogTemp, Log, TEXT("orderQ size : %d"), newOrderQ.Num());
+	UE_LOG(LogTemp, Log, TEXT("orderQ cost : %d"), newOrderQ[0].cost);
 	
 	
 
